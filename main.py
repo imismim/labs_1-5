@@ -34,3 +34,17 @@ def lab_4():
     print(f"max count element: {max(lst, key=lambda el: lst.count(el))}")
     # якщо є декілька елементів які появляються найбільшу кількість раз
     # то серед них буде обрано менший з цих елементів за значенням
+
+
+def lab_5(info_about_animal: dict):
+    # info_about_animal = {
+    #     "zebra": {"ave_life": 20, "speed": 20, "population": 100},
+    #     "lion": {"ave_life": 30, "speed": 17, "population": 50},
+    #     "hyene": {"ave_life": 10, "speed": 24, "population": 70},
+    #     "crocodile": {"ave_life": 23, "speed": 50, "population": 200}
+    # }
+
+    speediest_animal = sorted(info_about_animal.items(), key=lambda el: el[1]["speed"], reverse=True)[0][0]
+    smallest_population = sorted(info_about_animal.items(), key=lambda el: el[1]["population"])[0][0]
+    print(f"The speediest animal is {speediest_animal}")
+    print(f"The smallest population has {smallest_population}")
