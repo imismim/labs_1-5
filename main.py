@@ -18,3 +18,19 @@ def lab_2():
 def lab_3():
     words = input("Enter words (a,b,c,d ...): ").split(",")
     print(*[word for word in words if word[0] in word[1:]])
+
+
+def lab_4():
+    from random import randint
+    matrix = []
+    n, m = 5, 6
+    for i in range(n):
+        matrix.append([randint(0, 9) for j in range(m)])
+
+    for row in matrix:
+        print(*row)
+
+    lst = [el for row in matrix for el in row]
+    print(f"max count element: {max(lst, key=lambda el: lst.count(el))}")
+    # якщо є декілька елементів які появляються найбільшу кількість раз
+    # то серед них буде обрано менший з цих елементів за значенням
