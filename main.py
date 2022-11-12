@@ -13,3 +13,8 @@ def lab_2():
                            reverse=True)
     numbers_same_count = sorted([number for number in numbers_count if number[1] == numbers_count[0][1]])
     print(f"the most common: {numbers_same_count[0][0]}")
+
+
+def lab_3():
+    words = input("Enter words (a,b,c,d ...): ").split(",")
+    print(*[word for word in words if word[0] in word[1:]])
