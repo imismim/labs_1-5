@@ -48,3 +48,71 @@ def lab_5(info_about_animal: dict):
     smallest_population = sorted(info_about_animal.items(), key=lambda el: el[1]["population"])[0][0]
     print(f"The speediest animal is {speediest_animal}")
     print(f"The smallest population has {smallest_population}")
+
+class Rect:
+    def __init__(self, width, long):
+        self.__width = width
+        self.__long = long
+
+    @property
+    def width(self):
+        return self.__width
+
+    @property
+    def long(self):
+        return self.__long
+
+    def length_diagonal(self):
+        return pow(self.__long ** 2 + self.__width ** 2, 0.5)
+
+    def perimeter(self):
+        return 2 * (self.__long + self.__width)
+
+    def square(self):
+        return self.__long * self.__width
+
+    def __eq__(self, other):
+        if (self.__width == other.__width and self.__long == other.__long) or \
+                self.__width == other.__long and self.__long == other.__width:
+            return True
+        else:
+            return False
+
+    def __ne__(self, other):
+        if (self.__width != other.__width or self.__long != other.__long) or \
+                self.__width != other.__long or self.__long != other.__width:
+            return True
+        else:
+            return False
+
+    def __lt__(self, other):
+        if self.perimeter() < other.perimeter():
+            return True
+        else:
+            return False
+
+    def __gt__(self, other):
+        if self.perimeter() > other.perimeter():
+            return True
+        else:
+            return False
+
+    def __str__(self):
+        return f"Width: {self.__width}\nLong: {self.__long}\nPerimeter: {self.perimeter()}\nSquare: {self.square()}\n"
+
+
+class OperationRect:
+    def __init__(self, lst_rect):
+        self.__lst_rect = lst_rect
+
+    def the_smallest_perimeter_rect(self):
+        return min(self.__lst_rect)
+
+    def sort_by_increase_square(self):
+        return sorted(self.__lst_rect, key=lambda obj: obj.square())
+
+    def square_diagonals_length(self):
+        lst_square = list(filter(lambda obj: obj.width == obj.long, self.__lst_rect))
+        for obj in lst_square:
+            print(obj)
+            obj.length_diagonal()
